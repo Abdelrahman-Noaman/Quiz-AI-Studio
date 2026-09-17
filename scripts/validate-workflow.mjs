@@ -6,7 +6,9 @@ const workflow = JSON.parse(await readFile(workflowPath, "utf8"));
 const nodeNames = new Set(workflow.nodes?.map((node) => node.name));
 const requiredNodes = [
   "Webhook",
-  "Extract from File",
+  "Route File Type",
+  "Extract PDF File",
+  "Extract Text File",
   "AI Agent",
   "Validate Quiz",
   "Format Response",

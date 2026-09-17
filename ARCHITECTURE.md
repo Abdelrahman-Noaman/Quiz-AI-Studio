@@ -42,9 +42,9 @@ The frontend accepts either an immediate artifact response or a `202` processing
 
 ## 3. Document Processing
 
-The current workflow uses n8n's Extract from File node with PDF operation. A Code node collects non-empty extracted text, counts readable source files, and concatenates them with source-file separators. If no readable text remains, the workflow throws an error before calling Gemini.
+The workflow routes each binary item by MIME type. PDF items use n8n's Extract from File PDF operation; plain-text items use its Text File operation. A Code node collects non-empty extracted text, counts readable source files, and concatenates them with source-file separators. If no readable text remains, the workflow throws an error before calling Gemini.
 
-The frontend accepts several document extensions, but the checked-in n8n export explicitly demonstrates PDF extraction. Support for other extensions must be verified in the deployed n8n configuration before being described as end-to-end supported.
+The canonical workflow supports PDF and `.txt` files. DOC/DOCX/PPT/PPTX are not currently supported because no Office-document conversion node or service is present in the workflow.
 
 ## 4. AI Generation
 

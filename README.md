@@ -1,159 +1,343 @@
-# QuizAI Studio
+<div align="center">
 
-QuizAI Studio is an AI-powered assessment automation project that turns teacher-provided course documents into structured quizzes, creates Google Workspace assessment artifacts, evaluates student responses, and sends personalized feedback through an n8n-orchestrated workflow.
+# 🧠 QuizAI Studio
 
-The repository is a student graduation project and prototype. The AI and automation workflow is implemented externally in n8n; the Next.js application provides the canonical teacher-facing interface.
+### AI-Powered Assessment Automation for Educators
 
-## Overview
+*From course material to graded, personalized student feedback — automatically.*
 
-Creating an assessment is more than writing questions. Educators must read source material, balance difficulty and question types, create a form, prepare an answer key, monitor submissions, grade responses, and write useful feedback for each student. QuizAI Studio explores how LLMs and workflow automation can reduce that manual work while keeping the source material and configuration visible.
+<p>
+  <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=next.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+</p>
 
-## Engineering Highlights
+<p>
+  <img src="https://img.shields.io/badge/n8n-Automation-EA4B71?style=for-the-badge&logo=n8n&logoColor=white" />
+  <img src="https://img.shields.io/badge/Google_Gemini-AI-4285F4?style=for-the-badge&logo=google&logoColor=white" />
+  <img src="https://img.shields.io/badge/Google_Workspace-Integrated-34A853?style=for-the-badge&logo=google&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostgreSQL-Ready-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
+</p>
 
-- Sends multiple educational files and structured assessment configuration to an n8n webhook.
-- Uses source-grounded Gemini prompts for question generation and student evaluation.
-- Requests structured JSON from the LLM and parses, normalizes, and validates quiz output in n8n.
-- Enforces the configured question count and rejects incomplete generated quizzes.
-- Orchestrates document extraction, AI generation, Google Workspace calls, scheduled processing, and Gmail delivery.
-- Handles asynchronous generation responses with a `202 processing` status and job identifier when returned by n8n.
-- Generates personalized HTML performance reports from evaluated answers.
-- Includes error handling for malformed JSON, missing extracted material, invalid quiz structures, workflow failures, and request timeouts.
-- Includes a dependency-free validation command for the checked-in n8n workflow export.
+<p>
+  <a href="#-quick-start">Quick Start</a> •
+  <a href="#-how-it-works">How It Works</a> •
+  <a href="#-architecture">Architecture</a> •
+  <a href="#-setup-guide">Setup Guide</a> •
+  <a href="#-tech-stack">Tech Stack</a>
+</p>
 
-## Key Features
+</div>
 
-### Implemented
+---
 
-- Multiple document upload with client-side file count and size limits.
-- Assessment configuration for question count, difficulty, question type, subject, topic, instructions, and deadline.
-- Direct browser-to-n8n quiz generation request using `multipart/form-data`.
-- PDF extraction in n8n.
-- Gemini-based quiz generation with source-only prompt rules.
-- Question normalization and count validation in n8n.
-- Google Forms/Sheets creation through a Google Apps Script integration.
-- Answer key and response-sheet URL handling.
-- Scheduled pending-submission retrieval.
-- Gemini-based grading and HTML report generation.
-- Gmail delivery of student reports.
-- Browser-local assessment history and settings.
-- PostgreSQL connectivity health endpoint.
+<div align="center">
+  <img src="docs/screenshots/01-landing-hero.png" alt="QuizAI Studio — Make every question earn its place" width="900" />
+</div>
 
-### Planned or Not Implemented
+---
 
-- Real authentication and authorization.
-- Server-side request proxying and tenant isolation.
-- Database-backed users, quizzes, submissions, and settings.
-- Durable job status tracking and progress events.
-- Object storage for uploaded documents.
-- Automated tests for the n8n Code nodes.
-- Functional account notifications and advanced AI settings.
+## 🎯 The Problem
 
-## How It Works
+Creating an assessment is more than writing questions.
+
+Educators must:
+
+* 📚 Read and digest source material
+* ⚖️ Balance difficulty and question types
+* 📝 Build a form and prepare an answer key
+* 👀 Monitor submissions one by one
+* ✍️ Grade responses manually
+* 💬 Write personalized feedback for every student
+
+This work scales linearly with class size — but a teacher's time does not.
+
+## 💡 The Solution
+
+**QuizAI Studio** explores how LLMs and workflow automation can eliminate the repetitive parts of assessment design — while keeping the source material, prompts, and configuration fully visible to the teacher.
+
+<div align="center">
+  <img src="docs/screenshots/03-old-vs-quizai-loop.png" alt="The old loop vs the QuizAI loop" width="900" />
+</div>
+
+> The teacher sets the intent. QuizAI runs the loop.
+
+---
+
+## ✨ Key Features
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+
+**🚀 Implemented**
+
+* 📄 Multi-file upload (PDF + plain text)
+* 🎛️ Full quiz configuration — count, difficulty, type, topic, deadline, custom instructions
+* 🔗 Direct browser-to-n8n `multipart/form-data` request
+* 📖 PDF & text extraction in n8n
+* 🧠 Source-grounded Gemini quiz generation
+* 🧪 JSON parsing, normalization & count validation
+* 📝 Google Forms + Sheets via Apps Script
+* 🗝️ Auto-generated answer key & response sheet
+* ⏰ Scheduled pending-submission retrieval
+* 🤖 Gemini-based grading with HTML report
+* 📧 Personalized Gmail delivery
+* 🗂️ Browser-local history & settings
+* 🩺 PostgreSQL health endpoint
+
+    </td>
+    <td width="50%" valign="top">
+
+**🛣️ Planned**
+
+* 🔐 Real authentication & authorization
+* 🛡️ Server-side request proxying
+* 🗄️ Database-backed users, quizzes, submissions
+* 📊 Durable job status & progress events
+* ☁️ Object storage for uploaded documents
+* 🧪 Automated tests for n8n Code nodes
+* 🔔 Functional account notifications
+* ⚙️ Advanced AI settings
+
+    </td>
+  </tr>
+
+</table>
+
+---
+
+## 🎬 How It Works
+
+A teacher uploads course material and configures a quiz. QuizAI Studio streams the request to n8n, which extracts the text, calls Gemini with source-grounded prompts, validates the JSON output, and asks Google Apps Script to create a Google Form + Answer Key + Response Sheet. When students submit, a scheduled n8n branch grades each response with Gemini and emails a personalized HTML report through Gmail.
 
 ```mermaid
 flowchart LR
-    T[Teacher] --> F[Next.js workspace]
-    F -->|documents + quiz config| N[n8n webhook]
-    N --> X[PDF text extraction]
-    X --> G[Gemini quiz generation]
-    G --> V[JSON parsing and validation]
+    T[👨‍🏫 Teacher] --> F[Next.js Workspace]
+    F -->|documents + config| N[n8n Webhook]
+    N --> X[PDF Text Extraction]
+    X --> G[Gemini Quiz Generation]
+    G --> V[JSON Parse + Validate]
     V --> S[Google Apps Script]
-    S --> GF[Google Form]
-    S --> AK[Answer Key Sheet]
-    S --> RS[Student Response Sheet]
-    RS --> P[Scheduled n8n polling]
-    P --> E[Gemini response evaluation]
-    E --> R[Personalized HTML report]
-    R --> M[Gmail]
-    M --> ST[Student]
+    S --> GF[📝 Google Form]
+    S --> AK[🗝️ Answer Key Sheet]
+    S --> RS[📊 Response Sheet]
+    RS --> P[⏰ Scheduled n8n Polling]
+    P --> E[Gemini Response Evaluation]
+    E --> R[📄 Personalized HTML Report]
+    R --> M[📧 Gmail]
+    M --> ST[🎓 Student]
 ```
 
-## Architecture
+---
 
-The main application is the Next.js project in this repository. It does not currently contain the AI service or Google API server layer. Instead, it sends a browser request directly to a configured n8n webhook. The checked-in workflow export in [`workflows/quizai-studio.json`](workflows/quizai-studio.json) contains the automation and prompt logic required by that webhook.
+## 🖼️ Product Walkthrough
 
-The project has two workflow branches:
+<div align="center">
 
-1. Quiz generation: receive files, extract material, generate and validate questions, then call Google Apps Script to create the assessment artifacts.
-2. Student processing: run on a schedule, retrieve pending submissions, evaluate each student response, mark the response as evaluated, and send the report by Gmail.
+### 1️⃣ Upload Course Material
 
-## AI Workflow
+<img src="docs/screenshots/04-upload-documents.png" alt="Upload course material" width="750" />
 
-1. n8n extracts text from uploaded PDF input.
-2. A Code node aggregates extracted text and combines it with the normalized quiz configuration.
-3. A Gemini agent receives a prompt that defines source-only generation rules, question counts, difficulty distribution, question-type rules, and a JSON output shape.
-4. A Code node removes optional Markdown fences and parses the returned JSON.
-5. The validation node checks the quiz object, normalizes IDs and true/false values, trims over-generation, and rejects too few questions.
-6. A second Gemini agent receives student answers and grading context.
-7. The evaluation output contains graded answers and an HTML report payload.
-8. The finalization node calculates score and percentage and prepares the report for Gmail.
+### 2️⃣ Configure the Assessment
 
-The workflow uses prompt instructions and runtime checks. It does not currently implement model fine-tuning, retrieval infrastructure, automated factual benchmarking, or a separate guard model.
+<img src="docs/screenshots/05-quiz-configuration.png" alt="Quiz configuration" width="750" />
 
-## Automation Workflow
+### 3️⃣ Set Deadline & Advanced Options
 
-The n8n export includes a POST webhook and a scheduled trigger. The webhook responds with an accepted/processing response so the browser does not need to wait for every external operation. The scheduled branch asks the Google Apps Script integration for pending submissions, processes each submission through a loop, evaluates it with Gemini, marks it evaluated, and sends the report.
+<img src="docs/screenshots/06-deadline-advanced.png" alt="Deadline and advanced settings" width="750" />
 
-## Google Workspace Integration
+### 4️⃣ Review & Generate
 
-- **Google Forms:** created by the external Google Apps Script called from n8n.
-- **Google Sheets:** the workflow expects an answer key sheet and a response sheet URL/identifier from Apps Script.
-- **Gmail:** the n8n Gmail node sends the generated HTML performance report to the student.
-- **Google Apps Script:** acts as the integration boundary for creating quizzes, retrieving pending responses, and marking responses as evaluated.
+<img src="docs/screenshots/07-assessment-preview.png" alt="Assessment preview" width="750" />
 
-Credential setup is intentionally excluded from the export. Configure credentials in the n8n instance after importing the workflow. See [`docs/INTEGRATIONS.md`](docs/INTEGRATIONS.md).
+### 5️⃣ AI Generates Your Quiz
 
-## Tech Stack
+<img src="docs/screenshots/08-generating-progress.png" alt="Generating progress" width="750" />
 
-- **Frontend:** Next.js 16, React 19, TypeScript, Tailwind CSS
-- **Application backend:** Next.js route handler for PostgreSQL health checks
-- **AI:** Google Gemini through n8n LangChain nodes
-- **Automation:** n8n
-- **Document processing:** n8n Extract from File node
-- **Database layer:** Drizzle ORM, `pg`, PostgreSQL connectivity scaffolding
-- **External services:** Google Apps Script, Google Forms, Google Sheets, Gmail
-- **Browser persistence:** `localStorage`
-- **Validation:** TypeScript, ESLint, workflow validation script
+### 6️⃣ Get Your Assessment Artifacts
 
-## Project Structure
+<img src="docs/screenshots/09-generation-success.png" alt="Generated assessment links" width="750" />
 
-```text
-src/app/                 Next.js routes and shared UI
-src/app/workspace/       Canonical teacher quiz-generation interface
-src/app/history/         Browser-local assessment history
-src/app/settings/        Browser-local settings and webhook configuration
-src/app/login/           Prototype login screen; not real authentication
-src/app/api/health/      PostgreSQL connectivity health endpoint
-src/app/components/      Shared shell and landing-page presentation components
-src/app/lib/             Hydration-safe browser storage helper
-src/db/                  Drizzle/PostgreSQL connection scaffolding
-public/                  Local logo and presentation assets
-workflows/               Sanitized n8n workflow export
-scripts/                 Repository validation scripts
-docs/                    Integration and architecture notes
+### 7️⃣ Students Submit via Google Form
+
+<img src="docs/screenshots/10-google-form.png" alt="Generated Google Form" width="750" />
+
+### 8️⃣ Answer Key — Auto-Generated
+
+<img src="docs/screenshots/11-answer-key.png" alt="Answer Key sheet" width="900" />
+
+### 9️⃣ Responses Collected Automatically
+
+<img src="docs/screenshots/12-responses-sheet.png" alt="Response Sheet" width="900" />
+
+### 🔟 Personalized AI Report Delivered by Email
+
+<img src="docs/screenshots/13-email-report.png" alt="Personalized quiz performance email" width="700" />
+
+</div>
+
+---
+
+## 🏗️ Architecture
+
+The Next.js app in this repository is the **canonical teacher-facing interface**. It does not host the AI or Google API layer directly — instead, it sends a browser request straight to a configured **n8n webhook**. The automation, prompt engineering, and Google integrations live inside the sanitized n8n workflow exported to [`workflows/quizai-studio.json`](workflows/quizai-studio.json).
+
+### The Two Workflow Branches
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+
+**🟢 Branch 1 — Quiz Generation**
+
+Triggered by the teacher via HTTP webhook:
+
+1. Receive files + configuration
+2. Extract PDF / text content
+3. Aggregate + normalize prompt input
+4. Generate questions with Gemini
+5. Parse & validate JSON output
+6. Call Google Apps Script
+7. Create Form + Answer Key + Response Sheet
+
+    </td>
+    <td width="50%" valign="top">
+
+**🔵 Branch 2 — Student Processing**
+
+Triggered on a schedule:
+
+1. Ask Apps Script for pending submissions
+2. Loop over each submission
+3. Evaluate with Gemini using source context
+4. Build personalized HTML report
+5. Send via Gmail
+6. Mark submission as evaluated
+
+    </td>
+
+  </tr>
+</table>
+
+For a deeper dive, see [`docs/INTEGRATIONS.md`](docs/INTEGRATIONS.md).
+
+---
+
+## 🤖 AI Workflow
+
+1. **Extract** — n8n extracts text from uploaded PDF input
+2. **Aggregate** — a Code node combines extracted text with the normalized quiz configuration
+3. **Generate** — a Gemini agent receives a prompt defining:
+
+   * Source-only generation rules
+   * Question counts
+   * Difficulty distribution
+   * Question-type rules
+   * Exact JSON output shape
+4. **Sanitize** — strip optional Markdown fences, parse JSON
+5. **Validate** — normalize IDs and true/false values, trim over-generation, reject under-generation
+6. **Evaluate** — a second Gemini agent grades student answers using the source context
+7. **Report** — evaluation output contains graded answers + an HTML report payload
+8. **Finalize** — score & percentage calculated, report prepared for Gmail
+
+> The workflow uses prompt instructions + runtime checks. It does not currently implement fine-tuning, retrieval infrastructure, factual benchmarking, or a separate guard model.
+
+---
+
+## 🔌 Google Workspace Integration
+
+| Service                | Role                                                                                           |
+| ---------------------- | ---------------------------------------------------------------------------------------------- |
+| **Google Forms**       | Created by the external Google Apps Script called from n8n                                     |
+| **Google Sheets**      | Answer key + response sheet URLs returned by Apps Script                                       |
+| **Gmail**              | n8n Gmail node sends the personalized HTML report to each student                              |
+| **Google Apps Script** | Integration boundary — creates quizzes, retrieves pending responses, marks responses evaluated |
+
+Credential setup is intentionally excluded from the sanitized workflow export. Configure credentials in your own n8n instance after importing.
+
+---
+
+## 🧰 Tech Stack
+
+<table>
+  <tr>
+    <td><b>Frontend</b></td>
+    <td>Next.js 16 • React 19 • TypeScript • Tailwind CSS</td>
+  </tr>
+  <tr>
+    <td><b>App Backend</b></td>
+    <td>Next.js route handler (PostgreSQL health check)</td>
+  </tr>
+  <tr>
+    <td><b>AI</b></td>
+    <td>Google Gemini via n8n LangChain nodes</td>
+  </tr>
+  <tr>
+    <td><b>Automation</b></td>
+    <td>n8n (webhook + scheduled trigger)</td>
+  </tr>
+  <tr>
+    <td><b>Document Processing</b></td>
+    <td>n8n Extract from File (PDF + Text)</td>
+  </tr>
+  <tr>
+    <td><b>Database Layer</b></td>
+    <td>Drizzle ORM • <code>pg</code> • PostgreSQL scaffolding</td>
+  </tr>
+  <tr>
+    <td><b>External Services</b></td>
+    <td>Google Apps Script • Forms • Sheets • Gmail</td>
+  </tr>
+  <tr>
+    <td><b>Browser Persistence</b></td>
+    <td><code>localStorage</code></td>
+  </tr>
+  <tr>
+    <td><b>Validation</b></td>
+    <td>TypeScript • ESLint • workflow validation script</td>
+  </tr>
+</table>
+
+---
+
+## ⚡ Quick Start
+
+> ⚠️ **Important:** QuizAI Studio is a **composed system**. `npm run dev` alone is not enough.
+> The full demo needs **Next.js + n8n + Google Apps Script + Gemini + Gmail**.
+> Follow the [Setup Guide](#-setup-guide) below.
+
+```bash
+git clone https://github.com/Abdelrahman-Noaman/Quiz-AI-Studio.git
+cd Quiz-AI-Studio
+npm install
+npm run dev
 ```
 
-The workspace used to create this project also contains a Vite login prototype and legacy static HTML pages. They are not the canonical implementation and are intentionally not deleted in the surrounding playground. The Next.js application in this repository is the implementation to review.
+Then open `http://localhost:3000` and configure your n8n webhook URL in **Settings**.
 
-## Local Development
+---
 
-### Prerequisites
+## 📘 Setup Guide
 
-- Node.js compatible with the installed Next.js version.
-- npm.
-- Optional local PostgreSQL instance if you want to use `/api/health`.
-- An n8n instance with the required community/official nodes and external Google credentials for end-to-end generation.
+### 1. Local Development
 
-### Install and run
+**Prerequisites**
+
+* Node.js compatible with the installed Next.js version
+* npm
+* *(Optional)* Local PostgreSQL if you want to use `/api/health`
+* An n8n instance with the required nodes and Google credentials for end-to-end generation
+
+**Install & run**
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open `http://localhost:3000` and configure the n8n webhook URL in the Settings page. The browser sends documents directly to that URL.
-
-### Checks
+**Checks**
 
 ```bash
 npm run typecheck
@@ -162,55 +346,143 @@ npm run build
 npm run validate:workflow
 ```
 
-The health endpoint is available at `GET /api/health`. It checks PostgreSQL connectivity only; it is not an application readiness check for n8n or Google services.
+The health endpoint is available at `GET /api/health` — it only checks PostgreSQL connectivity (not n8n or Google service readiness).
 
-## Environment Variables
+### 2. Environment Variables
 
-Copy `.env.example` to `.env.local` for local database configuration. Never commit `.env.local` or real credentials. At present, `DATABASE_URL` is used by the database connection and health endpoint. The n8n webhook URL is currently stored in browser settings rather than a Next.js environment variable.
+Copy `.env.example` to `.env.local` for local database config.
 
-## n8n Setup
+**Never commit `.env.local` or real credentials.**
 
-1. Import [`workflows/quizai-studio.json`](workflows/quizai-studio.json) into n8n.
-2. Replace the three `YOUR-GOOGLE-APPS-SCRIPT-DEPLOYMENT` placeholders with the deployed Google Apps Script `/exec` URL.
-3. Configure the webhook path and use its production URL in QuizAI Studio Settings.
-4. Attach a Google Gemini credential to both Gemini model nodes.
-5. Attach a Gmail OAuth2 credential to the Gmail node.
-6. Verify the Google Apps Script accepts the actions used by the workflow: quiz creation, pending-submission retrieval, and marking a response evaluated.
-7. Test the generation branch and scheduled branch separately before enabling the schedule in a shared environment.
+Currently, `DATABASE_URL` is used by the database connection and health endpoint. The n8n webhook URL is stored in browser settings — not in a Next.js env var.
 
-The sanitized export intentionally has no credential IDs or secrets. n8n credentials must be selected after import.
+### 3. n8n Setup
 
-## Current Limitations
+1. Import [`workflows/quizai-studio.json`](workflows/quizai-studio.json) into n8n
+2. Replace the three `YOUR-GOOGLE-APPS-SCRIPT-DEPLOYMENT` placeholders with your deployed Apps Script `/exec` URL
+3. Configure the webhook path and copy its production URL into QuizAI Studio **Settings**
+4. Attach a **Google Gemini** credential to both Gemini model nodes
+5. Attach a **Gmail OAuth2** credential to the Gmail node
+6. Verify Apps Script accepts:
 
-- Authentication is a local UI gate only; any non-empty credentials are accepted.
-- Routes are not protected.
-- Assessment history and settings are stored in browser `localStorage`.
-- The database schema is empty and no quiz data is persisted in PostgreSQL.
-- Uploaded files are sent directly from the browser to the configured webhook.
-- The displayed analysis progress is simulated UI feedback, not server-side progress telemetry.
-- Some settings are currently UI-only and are not included in the generation payload.
-- The n8n workflow and Google Apps Script must be configured externally.
-- The checked-in workflow contains prompt and Code node logic but does not include the Google Apps Script source.
-- No production performance, scale, reliability, or grading-accuracy claims are made.
+   * Quiz creation
+   * Pending-submission retrieval
+   * Marking response evaluated
+7. Test the generation branch and scheduled branch **separately** before enabling the schedule in a shared environment
 
-## Future Roadmap
+> 🔒 The sanitized export intentionally has no credential IDs or secrets. n8n credentials must be selected after import.
 
-- Add real identity, sessions, authorization, and workspace isolation.
-- Move webhook calls behind authenticated Next.js server routes.
-- Add database schemas for users, assessments, jobs, submissions, and reports.
-- Store documents in object storage with retention controls.
-- Add durable job tracking, retries, idempotency, and observability.
-- Add automated tests for request validation and n8n transformation logic.
-- Make settings and notification preferences part of the actual workflow contract.
+### 4. Reproducing the Full Demo
 
-## Screenshots and Demo
+1. Start Next.js → open the workspace
+2. Import + activate the n8n workflow
+3. Paste the webhook URL into **Settings** → click **Test Connection**
+4. Upload course docs → configure → **Generate Quiz**
+5. Open the generated Google Form → submit with a **real email address**
+6. Manually execute the evaluation branch in n8n
+7. Check the student email for the personalized report
 
-No product screenshots or valid public demo link were found in the canonical application repository. Add real screenshots of the workspace, generated-artifact result, and history view before sharing the GitHub URL. Do not add fabricated screenshots or a placeholder demo link.
+---
 
-## GitHub Presentation
+## 📂 Project Structure
 
-**Suggested repository description:**
+```text
+src/app/                 Next.js routes and shared UI
+src/app/workspace/       Canonical teacher quiz-generation interface
+src/app/history/         Browser-local assessment history
+src/app/settings/        Browser-local settings and webhook configuration
+src/app/login/           Prototype login screen (not real authentication)
+src/app/api/health/      PostgreSQL connectivity health endpoint
+src/app/components/      Shared shell and landing-page components
+src/app/lib/             Hydration-safe browser storage helper
+src/db/                  Drizzle/PostgreSQL connection scaffolding
+public/                  Local logo and presentation assets
+workflows/               Sanitized n8n workflow export
+scripts/                 Repository validation scripts
+docs/                    Integration and architecture notes
+```
+
+> The surrounding playground also contains a Vite login prototype and legacy static HTML pages. Those are **not** the canonical implementation — the Next.js app in this repo is what should be reviewed.
+
+---
+
+## ⚠️ Current Limitations
+
+Honest notes about what this prototype **is** and **is not**:
+
+* 🔓 Authentication is a **UI gate only** — any non-empty credentials are accepted
+* 🚪 Routes are **not** protected
+* 💾 History and settings live in browser `localStorage`
+* 🗄️ The database schema is empty — no quiz data is persisted in PostgreSQL
+* 📤 Uploaded files are sent **directly from the browser** to the configured webhook
+* 📊 Displayed analysis progress is **simulated UI feedback**, not server telemetry
+* ⚙️ Some settings are UI-only and not included in the generation payload
+* 🔧 n8n workflow and Google Apps Script must be configured **externally**
+* 📜 The workflow export contains prompt + Code node logic but **not** the Apps Script source
+* 🏭 No production performance, scale, reliability, or grading-accuracy claims are made
+
+---
+
+## 🛣️ Roadmap
+
+* 🔐 Real identity, sessions, authorization, workspace isolation
+* 🛡️ Move webhook calls behind authenticated Next.js server routes
+* 🗄️ DB schemas for users, assessments, jobs, submissions, reports
+* ☁️ Object storage for documents with retention controls
+* 📊 Durable job tracking, retries, idempotency, observability
+* 🧪 Automated tests for request validation + n8n transformation logic
+* ⚙️ Make settings + notification preferences part of the actual workflow contract
+
+---
+
+## 🔒 Security & Privacy
+
+* ✅ No API keys, OAuth secrets, or credentials committed to the repo
+* ✅ `.env` files are gitignored; `.env.example` provided as a template
+* ✅ Public n8n workflow uses placeholders (e.g. `YOUR-GOOGLE-APPS-SCRIPT-DEPLOYMENT`)
+* ✅ Credential metadata stripped from the exported workflow
+* ✅ Reviewers must configure their **own** integrations in their **own** n8n instance
+
+### Common Gotcha
+
+If you see this in n8n:
+
+```text
+getaddrinfo ENOTFOUND your-google-apps-script-deployment
+```
+
+That's **not a bug** — the placeholder is intentional. Replace it with your own deployed Apps Script `/exec` URL.
+
+---
+
+## 📚 Additional Docs
+
+* 📐 [`ARCHITECTURE.md`](ARCHITECTURE.md) — architectural deep dive
+* 🔌 [`docs/INTEGRATIONS.md`](docs/INTEGRATIONS.md) — Google Workspace, Gemini, and n8n details
+* ⚙️ [`.env.example`](.env.example) — required environment variables
+
+---
+
+## 🏷️ GitHub Presentation
+
+**Suggested repository description**
 
 > AI-powered assessment automation platform that generates quizzes, evaluates student responses, and delivers personalized feedback using LLMs and workflow automation.
 
-**Suggested topics:** `ai`, `llm`, `ai-automation`, `education`, `edtech`, `n8n`, `google-workspace`, `assessment-automation`, `generative-ai`.
+**Suggested topics**
+
+`ai` • `llm` • `ai-automation` • `education` • `edtech` • `n8n` • `google-workspace` • `assessment-automation` • `generative-ai`
+
+---
+
+<div align="center">
+
+## 🎓 About
+
+**QuizAI Studio** is a graduation project exploring how modern LLMs and workflow automation can eliminate the repetitive parts of teaching assessment — freeing educators to focus on what matters most: their students.
+
+Built with ❤️ using Next.js, n8n, and Google Gemini.
+
+<sub>Made by <a href="https://github.com/Abdelrahman-Noaman">Abdelrahman Noaman</a></sub>
+
+</div>

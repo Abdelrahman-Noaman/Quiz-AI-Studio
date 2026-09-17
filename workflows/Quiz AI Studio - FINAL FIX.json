@@ -3,20 +3,6 @@
   "nodes": [
     {
       "parameters": {
-        "operation": "pdf",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.extractFromFile",
-      "typeVersion": 1.1,
-      "position": [
-        864,
-        304
-      ],
-      "id": "1cd5e14e-5ccd-4497-b1a5-2f0cec089415",
-      "name": "Extract from File"
-    },
-    {
-      "parameters": {
         "promptType": "define",
         "text": "=={{ JSON.stringify({\n  quizConfig: $json.quizConfig,\n  material: $json.material,\n  filesCount: $json.filesCount\n}) }}",
         "options": {
@@ -26,10 +12,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        1312,
-        304
+        -896,
+        320
       ],
-      "id": "092f0e66-6f0b-457b-878b-bbc153f1f72a",
+      "id": "60003965-9247-4cff-891a-f965831a4e3d",
       "name": "AI Agent"
     },
     {
@@ -39,16 +25,16 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1664,
-        304
+        -544,
+        320
       ],
-      "id": "f0a93a91-357a-4511-89dd-c9a6352dbdde",
+      "id": "30f27982-ec83-412c-b701-a8e10e89a29d",
       "name": "Code in JavaScript"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "https://YOUR-GOOGLE-APPS-SCRIPT-DEPLOYMENT/exec",
+        "url": "https://script.google.com/macros/s/AKfycbxYGm64rLYaf_lKqZfkMWVIWwbbvEkvcnfSqnG24I1H82aYsbFHsZN2PSurGxvMur5k/exec",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json }}",
@@ -57,10 +43,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.5,
       "position": [
-        2336,
-        304
+        128,
+        320
       ],
-      "id": "b5fd0c24-7ca3-417d-8c8e-199fa4008aa2",
+      "id": "32b4cd6f-9ba3-4cdc-999b-04c78593d085",
       "name": "HTTP Request"
     },
     {
@@ -70,10 +56,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2112,
-        304
+        -96,
+        320
       ],
-      "id": "6f189d50-884d-4e18-8b1f-edd875d00482",
+      "id": "3e239bf1-a9dd-47e7-ae5e-32a3caada7fd",
       "name": "build quiz"
     },
     {
@@ -87,10 +73,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        1104,
-        800
+        -1104,
+        816
       ],
-      "id": "8fd9e594-defc-414a-a37d-5fa32bdb39b5",
+      "id": "12f87510-b05b-4126-a8d1-6cea440737f2",
       "name": "AI Agent1"
     },
     {
@@ -105,12 +91,18 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        1824,
-        768
+        -384,
+        784
       ],
-      "id": "1b5d93f7-9a8d-4e3c-baa4-0edcda7f5438",
+      "id": "6c59c278-a7b4-40f8-b359-2624732baf1f",
       "name": "Send a message",
-      "webhookId": "8900d2fa-f0a9-4a33-a4ef-75fd9ac28de8"
+      "webhookId": "8900d2fa-f0a9-4a33-a4ef-75fd9ac28de8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "7OROGg5tNgKT1Fpk",
+          "name": "Gmail account"
+        }
+      }
     },
     {
       "parameters": {
@@ -119,10 +111,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1088,
-        304
+        -1104,
+        336
       ],
-      "id": "2bd6307e-770f-4a0d-aa35-7000f9fe282b",
+      "id": "16eb2c36-5474-4449-8af3-a3b543b3c50a",
       "name": "Code in JavaScript2"
     },
     {
@@ -134,11 +126,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        208,
-        48
+        -2000,
+        64
       ],
       "typeVersion": 1,
-      "id": "3dbe24f7-c55e-457f-86a7-8c6831364008",
+      "id": "145a9c1b-6d2e-479d-b761-cea146ab08fd",
       "name": "Sticky Note"
     },
     {
@@ -149,11 +141,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1200,
-        32
+        -1008,
+        48
       ],
       "typeVersion": 1,
-      "id": "f6526914-c834-4135-8b23-6b6616aca2a4",
+      "id": "9ae3d993-ca13-4fac-be16-dd4ecc798601",
       "name": "Sticky Note1"
     },
     {
@@ -164,11 +156,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        48,
-        704
+        -2160,
+        720
       ],
       "typeVersion": 1,
-      "id": "e7e5ca18-8c92-464b-b2f5-aa1d91fc093b",
+      "id": "58f023e3-67c1-4e78-bb77-c335c3fe1b6f",
       "name": "Sticky Note2"
     },
     {
@@ -184,32 +176,255 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        240,
-        320
+        -1968,
+        336
       ],
-      "id": "af56093e-a6dc-4bd7-904c-fdb371714804",
+      "id": "e8d804f0-56cb-49f5-933a-1e26206237ae",
       "name": "Webhook",
       "webhookId": "d28c4fc3-2afc-4673-86e4-43001cbad320"
     },
     {
       "parameters": {
-        "jsCode": "const input = $input.first();\n\nconst body = input.json.body ?? input.json ?? {};\nconst binary = input.binary ?? {};\n\nfunction parseJsonArray(value) {\n  if (Array.isArray(value)) return value;\n\n  if (typeof value !== 'string' || !value.trim()) {\n    return [];\n  }\n\n  try {\n    const parsed = JSON.parse(value);\n    return Array.isArray(parsed) ? parsed : [];\n  } catch {\n    return value\n      .split(',')\n      .map(v => v.trim())\n      .filter(Boolean);\n  }\n}\n\nfunction normalizeQuestionTypes(value) {\n  const raw = parseJsonArray(value);\n\n  if (\n    raw.length === 0 ||\n    raw.some(v => String(v).toLowerCase() === 'mixed')\n  ) {\n    return [\n      'multiple_choice',\n      'true_false',\n      'short_answer'\n    ];\n  }\n\n  return raw.map(type => {\n    const t = String(type).toLowerCase().trim();\n\n    if (t === 'multiple_choice' || t === 'multiple choice' || t === 'mcq') {\n      return 'multiple_choice';\n    }\n\n    if (t === 'true_false' || t === 'true/false' || t === 'true false') {\n      return 'true_false';\n    }\n\n    if (t === 'short_answer' || t === 'short answer') {\n      return 'short_answer';\n    }\n\n    throw new Error(`Unsupported question type: ${type}`);\n  });\n}\n\nfunction distribution(total, ratios) {\n  const raw = ratios.map(r => total * r);\n  const result = raw.map(Math.floor);\n\n  let remaining = total - result.reduce((a, b) => a + b, 0);\n\n  const order = raw\n    .map((value, index) => ({\n      index,\n      remainder: value - Math.floor(value)\n    }))\n    .sort((a, b) => b.remainder - a.remainder);\n\n  for (let i = 0; i < remaining; i++) {\n    result[order[i].index]++;\n  }\n\n  return result;\n}\n\nconst numberOfQuestions = Number(\n  body.numberOfQuestions ?? 20\n);\n\nif (![10, 20, 30, 40].includes(numberOfQuestions)) {\n  throw new Error(\n    'numberOfQuestions must be one of: 10, 20, 30, 40.'\n  );\n}\n\nconst difficulty = String(\n  body.difficulty ?? 'mixed'\n).toLowerCase();\n\nif (!['easy', 'medium', 'hard', 'mixed'].includes(difficulty)) {\n  throw new Error(\n    'difficulty must be Easy, Medium, Hard, or Mixed.'\n  );\n}\n\nconst questionTypes = normalizeQuestionTypes(\n  body.questionTypes\n);\n\nlet difficultyDistribution;\n\nif (difficulty === 'mixed') {\n  const [easy, medium, hard] =\n    distribution(numberOfQuestions, [0.25, 0.50, 0.25]);\n\n  difficultyDistribution = {\n    Easy: easy,\n    Medium: medium,\n    Hard: hard\n  };\n} else {\n  difficultyDistribution = {\n    Easy: difficulty === 'easy' ? numberOfQuestions : 0,\n    Medium: difficulty === 'medium' ? numberOfQuestions : 0,\n    Hard: difficulty === 'hard' ? numberOfQuestions : 0\n  };\n}\n\nlet typeDistribution;\n\nif (\n  questionTypes.includes('multiple_choice') &&\n  questionTypes.includes('true_false') &&\n  questionTypes.includes('short_answer')\n) {\n  const [mcq, tf, short] =\n    distribution(numberOfQuestions, [0.60, 0.20, 0.20]);\n\n  typeDistribution = {\n    multiple_choice: mcq,\n    true_false: tf,\n    short_answer: short\n  };\n} else {\n  typeDistribution = {\n    multiple_choice:\n      questionTypes.includes('multiple_choice')\n        ? numberOfQuestions\n        : 0,\n\n    true_false:\n      questionTypes.includes('true_false')\n        ? numberOfQuestions\n        : 0,\n\n    short_answer:\n      questionTypes.includes('short_answer')\n        ? numberOfQuestions\n        : 0\n  };\n}\n\nconst deadlineEnabled =\n  body.deadlineEnabled !== false;\n\nlet deadline = null;\n\nif (deadlineEnabled) {\n  if (body.deadline && String(body.deadline).trim()) {\n    const parsedDeadline = new Date(body.deadline);\n\n    if (isNaN(parsedDeadline.getTime())) {\n      throw new Error('Invalid deadline.');\n    }\n\n    deadline = parsedDeadline.toISOString();\n  } else {\n    // Current frontend has no deadline field.\n    // Until you add one, default = 3 days.\n    deadline = new Date(\n      Date.now() + 3 * 24 * 60 * 60 * 1000\n    ).toISOString();\n  }\n}\n\nconst quizConfig = {\n  numberOfQuestions,\n\n  difficulty,\n\n  questionTypes,\n\n  subject:\n    String(body.subject ?? '').trim(),\n\n  topic:\n    String(body.topic ?? '').trim(),\n\n  instructions:\n    String(body.instructions ?? '').trim(),\n\n  difficultyDistribution,\n\n  typeDistribution,\n\n  deadlineEnabled,\n\n  deadline,\n\n  collectEmail: true,\n\n  limitOneResponsePerUser: true,\n\n  shuffleQuestions: false\n};\n\nconst results = [];\n\nfor (const key of Object.keys(binary)) {\n\n  const file = binary[key];\n\n  if (!file) continue;\n\n  const mimeType = String(file.mimeType ?? '');\n\n  if (!mimeType.includes('pdf')) {\n    continue;\n  }\n\n  results.push({\n    json: {\n      fileName: file.fileName || key,\n      mimeType,\n      quizConfig\n    },\n\n    binary: {\n      data: file\n    }\n  });\n}\n\nif (results.length === 0) {\n  throw new Error(\n    'No PDF files were uploaded. Please upload at least one PDF.'\n  );\n}\n\nreturn results;"
+        "jsCode": "const input = $input.first();\n\nconst body = input.json.body ?? input.json ?? {};\nconst binary = input.binary ?? {};\n\nfunction parseJsonArray(value) {\n  if (Array.isArray(value)) return value;\n\n  if (typeof value !== 'string' || !value.trim()) {\n    return [];\n  }\n\n  try {\n    const parsed = JSON.parse(value);\n    return Array.isArray(parsed) ? parsed : [];\n  } catch {\n    return value\n      .split(',')\n      .map(v => v.trim())\n      .filter(Boolean);\n  }\n}\n\nfunction normalizeQuestionTypes(value) {\n  const raw = parseJsonArray(value);\n\n  if (\n    raw.length === 0 ||\n    raw.some(v => String(v).toLowerCase() === 'mixed')\n  ) {\n    return [\n      'multiple_choice',\n      'true_false',\n      'short_answer'\n    ];\n  }\n\n  return raw.map(type => {\n    const t = String(type).toLowerCase().trim();\n\n    if (t === 'multiple_choice' || t === 'multiple choice' || t === 'mcq') {\n      return 'multiple_choice';\n    }\n\n    if (t === 'true_false' || t === 'true/false' || t === 'true false') {\n      return 'true_false';\n    }\n\n    if (t === 'short_answer' || t === 'short answer') {\n      return 'short_answer';\n    }\n\n    throw new Error(`Unsupported question type: ${type}`);\n  });\n}\n\nfunction distribution(total, ratios) {\n  const raw = ratios.map(r => total * r);\n  const result = raw.map(Math.floor);\n\n  let remaining = total - result.reduce((a, b) => a + b, 0);\n\n  const order = raw\n    .map((value, index) => ({\n      index,\n      remainder: value - Math.floor(value)\n    }))\n    .sort((a, b) => b.remainder - a.remainder);\n\n  for (let i = 0; i < remaining; i++) {\n    result[order[i].index]++;\n  }\n\n  return result;\n}\n\nconst numberOfQuestions = Number(\n  body.numberOfQuestions ?? 20\n);\n\nif (![10, 20, 30, 40].includes(numberOfQuestions)) {\n  throw new Error(\n    'numberOfQuestions must be one of: 10, 20, 30, 40.'\n  );\n}\n\nconst difficulty = String(\n  body.difficulty ?? 'mixed'\n).toLowerCase();\n\nif (!['easy', 'medium', 'hard', 'mixed'].includes(difficulty)) {\n  throw new Error(\n    'difficulty must be Easy, Medium, Hard, or Mixed.'\n  );\n}\n\nconst questionTypes = normalizeQuestionTypes(\n  body.questionTypes\n);\n\nlet difficultyDistribution;\n\nif (difficulty === 'mixed') {\n  const [easy, medium, hard] =\n    distribution(numberOfQuestions, [0.25, 0.50, 0.25]);\n\n  difficultyDistribution = {\n    Easy: easy,\n    Medium: medium,\n    Hard: hard\n  };\n} else {\n  difficultyDistribution = {\n    Easy: difficulty === 'easy' ? numberOfQuestions : 0,\n    Medium: difficulty === 'medium' ? numberOfQuestions : 0,\n    Hard: difficulty === 'hard' ? numberOfQuestions : 0\n  };\n}\n\nlet typeDistribution;\n\nif (\n  questionTypes.includes('multiple_choice') &&\n  questionTypes.includes('true_false') &&\n  questionTypes.includes('short_answer')\n) {\n  const [mcq, tf, short] =\n    distribution(numberOfQuestions, [0.60, 0.20, 0.20]);\n\n  typeDistribution = {\n    multiple_choice: mcq,\n    true_false: tf,\n    short_answer: short\n  };\n} else {\n  typeDistribution = {\n    multiple_choice:\n      questionTypes.includes('multiple_choice')\n        ? numberOfQuestions\n        : 0,\n\n    true_false:\n      questionTypes.includes('true_false')\n        ? numberOfQuestions\n        : 0,\n\n    short_answer:\n      questionTypes.includes('short_answer')\n        ? numberOfQuestions\n        : 0\n  };\n}\n\nconst deadlineEnabled =\n  body.deadlineEnabled !== false;\n\nlet deadline = null;\n\nif (deadlineEnabled) {\n  if (body.deadline && String(body.deadline).trim()) {\n    const parsedDeadline = new Date(body.deadline);\n\n    if (isNaN(parsedDeadline.getTime())) {\n      throw new Error('Invalid deadline.');\n    }\n\n    deadline = parsedDeadline.toISOString();\n  } else {\n    // Current frontend has no deadline field.\n    // Until you add one, default = 3 days.\n    deadline = new Date(\n      Date.now() + 3 * 24 * 60 * 60 * 1000\n    ).toISOString();\n  }\n}\n\nconst quizConfig = {\n  numberOfQuestions,\n\n  difficulty,\n\n  questionTypes,\n\n  subject:\n    String(body.subject ?? '').trim(),\n\n  topic:\n    String(body.topic ?? '').trim(),\n\n  instructions:\n    String(body.instructions ?? '').trim(),\n\n  difficultyDistribution,\n\n  typeDistribution,\n\n  deadlineEnabled,\n\n  deadline,\n\n  collectEmail: true,\n\n  limitOneResponsePerUser: true,\n\n  shuffleQuestions: false\n};\n\nconst results = [];\n\nfor (const key of Object.keys(binary)) {\n\n  const file = binary[key];\n\n  if (!file) continue;\n\n  const mimeType = String(file.mimeType ?? '').toLowerCase();\n  const fileName = String(file.fileName || key).toLowerCase();\n  const isPdf = mimeType.includes('pdf') || fileName.endsWith('.pdf');\n  const isText = mimeType.startsWith('text/') || fileName.endsWith('.txt');\n\n  if (!isPdf && !isText) {\n    throw new Error(\n      `Unsupported file type: ${file.fileName || key}. Supported formats are PDF and TXT.`\n    );\n  }\n\n  results.push({\n    json: {\n      fileName: file.fileName || key,\n      mimeType,\n      quizConfig\n    },\n\n    binary: {\n      data: file\n    }\n  });\n}\n\nif (results.length === 0) {\n  throw new Error(\n    'No supported files were uploaded. Please upload at least one PDF or TXT file.'\n  );\n}\n\nreturn results;"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        528,
-        336
+        -1792,
+        544
       ],
-      "id": "7fe776dd-f393-4e59-95e3-2f70da66b327",
+      "id": "9ca6526d-07d5-4fa9-b712-e91139635117",
       "name": "Code in JavaScript4"
     },
     {
       "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f7b8d6a1-4f55-4e50-bb3e-5ca3b1d9a001",
+              "leftValue": "={{ $binary.data.mimeType }}",
+              "rightValue": "pdf",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1472,
+        400
+      ],
+      "id": "018b0a98-375d-4979-96df-470716db5abe",
+      "name": "Route File Type"
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        -1232,
+        544
+      ],
+      "id": "0fdd27d2-3e72-4ad0-a1cf-78edc8cdff59",
+      "name": "Extract Text File"
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        -1232,
+        64
+      ],
+      "id": "b1185b78-aee4-454c-ad38-71dca8753294",
+      "name": "Extract PDF File"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $json;\n\nconst quiz = data.quiz;\nconst config = data.quizConfig;\n\nif (!quiz || !Array.isArray(quiz.questions)) {\n  throw new Error('Invalid quiz structure.');\n}\n\nlet questions = quiz.questions;\n\nconst expectedTotal = Number(config.numberOfQuestions);\n\n// ─── Reassign IDs sequentially first ────────────────────────────────────────\nquestions = questions.map((q, index) => ({\n  ...q,\n  id: index + 1\n}));\n\n// ─── Normalize difficulty casing ─────────────────────────────────────────────\nquestions = questions.map(q => ({\n  ...q,\n  difficulty: typeof q.difficulty === 'string'\n    ? q.difficulty.charAt(0).toUpperCase() + q.difficulty.slice(1).toLowerCase()\n    : q.difficulty\n}));\n\n// ─── Normalize true_false options and correct_answer ────────────────────────\nquestions = questions.map(q => {\n  if (q.type !== 'true_false') return q;\n\n  const options = Array.isArray(q.options)\n    ? q.options.map(o => {\n        const s = String(o).trim();\n        if (s.toLowerCase() === 'true') return 'True';\n        if (s.toLowerCase() === 'false') return 'False';\n        return s;\n      })\n    : ['True', 'False'];\n\n  const raw = String(q.correct_answer ?? '').trim();\n  const correct =\n    raw.charAt(0).toUpperCase() + raw.slice(1).toLowerCase();\n\n  return { ...q, options, correct_answer: correct };\n});\n\n// ─── Trim to expected total if AI over-generated ─────────────────────────────\nif (questions.length > expectedTotal) {\n  console.log(\n    `AI returned ${questions.length} questions. Trimming to ${expectedTotal}.`\n  );\n  questions = questions.slice(0, expectedTotal);\n}\n\nif (questions.length < expectedTotal) {\n  throw new Error(\n    `Too few questions. Expected ${expectedTotal}, received ${questions.length}. ` +\n    `Cannot add missing questions — regenerate required.`\n  );\n}\n\n// ─── Reassign IDs after trimming ─────────────────────────────────────────────\nquestions = questions.map((q, index) => ({\n  ...q,\n  id: index + 1\n}));\n\n// ─── Validate each question individually ─────────────────────────────────────\nconst questionTexts = new Set();\n\nfor (const q of questions) {\n\n  // Type\n  if (!q.type) {\n    throw new Error(`Question ${q.id} has no type.`);\n  }\n\n  const validTypes = ['multiple_choice', 'true_false', 'short_answer'];\n  if (!validTypes.includes(q.type)) {\n    throw new Error(\n      `Question ${q.id} has invalid type: \"${q.type}\". ` +\n      `Allowed: multiple_choice, true_false, short_answer.`\n    );\n  }\n\n  // Difficulty\n  if (!['Easy', 'Medium', 'Hard'].includes(q.difficulty)) {\n    throw new Error(\n      `Question ${q.id} has invalid difficulty: \"${q.difficulty}\". ` +\n      `Allowed: Easy, Medium, Hard.`\n    );\n  }\n\n  // Question text\n  const normalizedQuestion = String(q.question ?? '').trim().toLowerCase();\n\n  if (!normalizedQuestion) {\n    throw new Error(`Question ${q.id} has empty question text.`);\n  }\n\n  if (questionTexts.has(normalizedQuestion)) {\n    throw new Error(\n      `Duplicate question text at question ${q.id}: \"${q.question}\"`\n    );\n  }\n\n  questionTexts.add(normalizedQuestion);\n\n  // Required fields\n  if (!q.topic) {\n    throw new Error(`Question ${q.id} has no topic.`);\n  }\n\n  if (!q.explanation) {\n    throw new Error(`Question ${q.id} has no explanation.`);\n  }\n\n  if (!q.points || Number(q.points) <= 0) {\n    throw new Error(`Question ${q.id} has invalid points.`);\n  }\n\n  // ── Multiple Choice ───────────────────────────────────────────────────────\n  if (q.type === 'multiple_choice') {\n\n    if (!Array.isArray(q.options) || q.options.length !== 4) {\n      throw new Error(\n        `MCQ ${q.id} must have exactly 4 options. ` +\n        `Found: ${Array.isArray(q.options) ? q.options.length : 'none'}.`\n      );\n    }\n\n    const normalizedOptions = q.options.map(x =>\n      String(x).trim().toLowerCase()\n    );\n\n    if (new Set(normalizedOptions).size !== 4) {\n      throw new Error(`MCQ ${q.id} contains duplicate options.`);\n    }\n\n    const normalizedCorrect = String(q.correct_answer ?? '').trim().toLowerCase();\n    const optionMatch = normalizedOptions.some(o => o === normalizedCorrect);\n\n    if (!optionMatch) {\n      throw new Error(\n        `MCQ ${q.id} correct_answer \"${q.correct_answer}\" does not match any option.`\n      );\n    }\n  }\n\n  // ── True / False ──────────────────────────────────────────────────────────\n  if (q.type === 'true_false') {\n\n    if (\n      !Array.isArray(q.options) ||\n      q.options.length !== 2 ||\n      !q.options.includes('True') ||\n      !q.options.includes('False')\n    ) {\n      throw new Error(\n        `True/False question ${q.id} must use [\"True\", \"False\"]. ` +\n        `Received: ${JSON.stringify(q.options)}`\n      );\n    }\n\n    if (!['True', 'False'].includes(q.correct_answer)) {\n      throw new Error(\n        `True/False question ${q.id} has invalid correct_answer: \"${q.correct_answer}\".`\n      );\n    }\n  }\n\n  // ── Short Answer ──────────────────────────────────────────────────────────\n  if (q.type === 'short_answer') {\n\n    if (\n      !Array.isArray(q.accepted_answers) ||\n      q.accepted_answers.length === 0\n    ) {\n      throw new Error(\n        `Short-answer question ${q.id} needs at least one accepted_answer.`\n      );\n    }\n\n    if (\n      !Array.isArray(q.grading_rubric) ||\n      q.grading_rubric.length === 0\n    ) {\n      throw new Error(\n        `Short-answer question ${q.id} needs at least one grading_rubric item.`\n      );\n    }\n  }\n}\n\n// ─── Summary (informational only — not enforced) ─────────────────────────────\nconst finalTypes = { multiple_choice: 0, true_false: 0, short_answer: 0 };\nconst finalDifficulty = { Easy: 0, Medium: 0, Hard: 0 };\n\nfor (const q of questions) {\n  if (q.type in finalTypes) finalTypes[q.type]++;\n  if (q.difficulty in finalDifficulty) finalDifficulty[q.difficulty]++;\n}\n\nconsole.log('Final type distribution:', JSON.stringify(finalTypes));\nconsole.log('Final difficulty distribution:', JSON.stringify(finalDifficulty));\n\n// ─── Source coverage check ───────────────────────────────────────────────────\nif (quiz.source_coverage_ok === false) {\n  throw new Error(\n    'AI reported that the requested topic is not sufficiently covered ' +\n    'by the source material.'\n  );\n}\n\n// ─── Pass ────────────────────────────────────────────────────────────────────\nreturn [\n  {\n    json: {\n      quiz: {\n        ...quiz,\n        questions\n      },\n      quizConfig: config,\n      validation: {\n        valid: true,\n        questionCount: questions.length,\n        finalTypes,\n        finalDifficulty\n      }\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -320,
+        320
+      ],
+      "id": "5cc03b54-66f8-48f9-b753-823e97ee1d4c",
+      "name": "Validate Quiz"
+    },
+    {
+      "parameters": {
+        "jsCode": "const apps = $input.first().json;\n\n// Log everything so we can see what Apps Script actually returned\nconsole.log('Apps Script returned:', JSON.stringify(apps));\n\nreturn [\n  {\n    json: {\n      success: true,\n      quizUrl: apps.formUrl || apps.url || null,\n      formId: apps.formId || null,\n      title: apps.title || 'Untitled Quiz',\n      responseSheetUrl: apps.responseSheetUrl || null,   // ✅ Fixed\n      responseSheetId: apps.responseSheetId || null,     // ✅ Fixed\n      responseSheetName: apps.responseSheetName || null, // ✅ Added\n      answerKeyUrl: apps.answerKeySheetUrl || null,      // ✅ Fixed (was answerKeyUrl)\n      answerKeyId: apps.answerKeySheetId || null,        // ✅ Fixed (was answerKeyId)\n      deadline: apps.deadline || null,\n      message: 'Your quiz has been generated successfully.'\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        352,
+        320
+      ],
+      "id": "fb18deac-7ea6-4fc5-9411-6d469a74fdc2",
+      "name": "Format Response"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.1-pro-preview",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        -912,
+        512
+      ],
+      "id": "48df9da7-8dea-4a26-8d55-fbbb3b192645",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": null,
+          "name": "",
+          "__aiGatewayManaged": true
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -2032,
+        816
+      ],
+      "id": "a2edb842-0434-48df-97d7-f2729fccf05f",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://script.google.com/macros/s/AKfycbxYGm64rLYaf_lKqZfkMWVIWwbbvEkvcnfSqnG24I1H82aYsbFHsZN2PSurGxvMur5k/exec",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"action\": \"getPendingSubmissions\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        -1824,
+        832
+      ],
+      "id": "375b1c8d-f59a-4090-b704-d892050ffe69",
+      "name": "Get Pending Submissions"
+    },
+    {
+      "parameters": {
+        "jsCode": "const response = $json;\n\nif (!response.success) {\n  throw new Error(\n    response.error || 'Failed to retrieve pending submissions.'\n  );\n}\n\nconst submissions = Array.isArray(response.submissions)\n  ? response.submissions\n  : [];\n\nreturn submissions.map(submission => ({\n  json: submission\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1584,
+        752
+      ],
+      "id": "802bef43-b5f0-4d18-a664-6fd89544d82c",
+      "name": "Prepare Submissions"
+    },
+    {
+      "parameters": {
+        "jsCode": "function parseAIOutput(value) {\n  if (typeof value !== 'string') return value;\n  let text = value.trim();\n  if (text.startsWith('```')) {\n    text = text\n      .replace(/^```json\\s*/i, '')\n      .replace(/^```\\s*/i, '')\n      .replace(/```\\s*$/i, '')\n      .trim();\n  }\n  try {\n    return JSON.parse(text);\n  } catch (e) {\n    throw new Error('AI returned invalid JSON: ' + e.message + '\\n\\nOutput:\\n' + text);\n  }\n}\n\nconst ai = parseAIOutput($json.output);\nconst base = $('Loop Over Items').item.json;\n\nlet earnedPoints = 0;\nlet maxPoints = 0;\nconst incorrectAnswers = [];\nconst partiallyCorrect = [];\n\nif (Array.isArray(ai.graded_answers)) {\n  for (const g of ai.graded_answers) {\n    const awarded = Number(g.awarded_points || 0);\n    const max = Number(g.max_points || 1);\n    earnedPoints += awarded;\n    maxPoints += max;\n\n    if (g.verdict === 'incorrect') {\n      incorrectAnswers.push(g.question);\n    } else if (g.verdict === 'partial') {\n      partiallyCorrect.push(g.question);\n    }\n  }\n} else {\n  // Fallback: calculate from base answers if AI grading missing\n  for (const answer of base.answers) {\n    const points = Number(answer.points || 1);\n    maxPoints += points;\n\n    const student = String(answer.student_answer || '').trim().toLowerCase();\n    const correct = String(answer.correct_answer || '').trim().toLowerCase();\n\n    if (student === correct && student !== '') {\n      earnedPoints += points;\n    } else {\n      incorrectAnswers.push(answer.question);\n    }\n  }\n}\n\nconst percentage = maxPoints > 0\n  ? Math.round((earnedPoints / maxPoints) * 10000) / 100\n  : 0;\n\nlet classification;\nlet classificationColor;\nif (percentage >= 95) {\n  classification = 'Outstanding';\n  classificationColor = '#10b981';\n} else if (percentage >= 85) {\n  classification = 'Excellent';\n  classificationColor = '#22c55e';\n} else if (percentage >= 70) {\n  classification = 'Good';\n  classificationColor = '#3b82f6';\n} else if (percentage >= 60) {\n  classification = 'Fair';\n  classificationColor = '#f59e0b';\n} else {\n  classification = 'Needs Improvement';\n  classificationColor = '#ef4444';\n}\n\n// Build an HTML score banner to prepend to the AI's HTML report\nconst scoreBanner = `\n<div style=\"max-width:600px;margin:20px auto;background:linear-gradient(135deg,${classificationColor},${classificationColor}dd);border-radius:12px;padding:30px;text-align:center;font-family:Arial,Helvetica,sans-serif;box-shadow:0 4px 12px rgba(0,0,0,0.1);\">\n  <div style=\"color:#ffffff;font-size:14px;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;\">📊 Official Score</div>\n  <div style=\"color:#ffffff;font-size:48px;font-weight:bold;margin:10px 0;\">${earnedPoints} / ${maxPoints}</div>\n  <div style=\"color:#ffffff;font-size:36px;font-weight:bold;margin:5px 0;\">${percentage}%</div>\n  <div style=\"display:inline-block;background:rgba(255,255,255,0.2);color:#ffffff;padding:8px 20px;border-radius:20px;font-size:16px;font-weight:bold;margin-top:10px;\">${classification}</div>\n  <table width=\"100%\" cellpadding=\"10\" cellspacing=\"0\" style=\"margin-top:20px;color:#ffffff;\">\n    <tr>\n      <td style=\"text-align:center;border-right:1px solid rgba(255,255,255,0.3);\">\n        <div style=\"font-size:24px;font-weight:bold;\">${base.answers.length}</div>\n        <div style=\"font-size:12px;opacity:0.9;\">Questions</div>\n      </td>\n      <td style=\"text-align:center;border-right:1px solid rgba(255,255,255,0.3);\">\n        <div style=\"font-size:24px;font-weight:bold;\">${incorrectAnswers.length}</div>\n        <div style=\"font-size:12px;opacity:0.9;\">Needs Review</div>\n      </td>\n      <td style=\"text-align:center;\">\n        <div style=\"font-size:24px;font-weight:bold;\">${partiallyCorrect.length}</div>\n        <div style=\"font-size:12px;opacity:0.9;\">Partial</div>\n      </td>\n    </tr>\n  </table>\n</div>\n`;\n\n// The AI now generates full HTML — prepend the score banner\nconst htmlReport = scoreBanner + String(ai.report_markdown || '').trim();\n\nreturn [{\n  json: {\n    ...base,\n    earnedPoints,\n    maxPoints,\n    percentage,\n    classification,\n    report: htmlReport\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -752,
+        800
+      ],
+      "id": "ca610536-e253-45fd-a19a-f72ab0697474",
+      "name": "Finalize Report"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://script.google.com/macros/s/AKfycbxYGm64rLYaf_lKqZfkMWVIWwbbvEkvcnfSqnG24I1H82aYsbFHsZN2PSurGxvMur5k/exec",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ action: \"markEvaluated\", responseSheetId: $('Loop Over Items').item.json.responseSheetId, responseSheetName: $('Loop Over Items').item.json.responseSheetName, rowNumber: $('Loop Over Items').item.json.rowNumber, score: $('Finalize Report').item.json.earnedPoints, percentage: $('Finalize Report').item.json.percentage }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        -16,
+        800
+      ],
+      "id": "64e3e962-5b83-414b-95b6-43a4aa314487",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -1360,
+        800
+      ],
+      "id": "fc22a45c-473f-4c1e-b242-940ce23e0086",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.1-pro-preview",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        -1168,
+        1056
+      ],
+      "id": "f104dac9-08b1-4935-9fd1-b2c8975b4965",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": null,
+          "name": "",
+          "__aiGatewayManaged": true
+        }
+      }
+    },
+    {
+      "parameters": {
         "respondWith": "json",
-        "responseBody": "={{ { success: true, status: 'processing', jobId: ($json.quizConfig?.topic || 'quiz') + '_' + Date.now(), message: 'Files received! Quiz generation started in background.' } }}",
+        "responseBody": "={{ $json }}",
         "options": {
-          "responseCode": 202,
           "responseHeaders": {
             "entries": [
               {
@@ -231,174 +446,15 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        720,
-        304
+        464,
+        528
       ],
-      "id": "65a437b7-cfb8-4327-be91-b5c92d14137b",
-      "name": "Respond to Webhook"
-    },
-    {
-      "parameters": {
-        "jsCode": "const data = $json;\n\nconst quiz = data.quiz;\nconst config = data.quizConfig;\n\nif (!quiz || !Array.isArray(quiz.questions)) {\n  throw new Error('Invalid quiz structure.');\n}\n\nlet questions = quiz.questions;\n\nconst expectedTotal = Number(config.numberOfQuestions);\n\n// ─── Reassign IDs sequentially first ────────────────────────────────────────\nquestions = questions.map((q, index) => ({\n  ...q,\n  id: index + 1\n}));\n\n// ─── Normalize difficulty casing ─────────────────────────────────────────────\nquestions = questions.map(q => ({\n  ...q,\n  difficulty: typeof q.difficulty === 'string'\n    ? q.difficulty.charAt(0).toUpperCase() + q.difficulty.slice(1).toLowerCase()\n    : q.difficulty\n}));\n\n// ─── Normalize true_false options and correct_answer ────────────────────────\nquestions = questions.map(q => {\n  if (q.type !== 'true_false') return q;\n\n  const options = Array.isArray(q.options)\n    ? q.options.map(o => {\n        const s = String(o).trim();\n        if (s.toLowerCase() === 'true') return 'True';\n        if (s.toLowerCase() === 'false') return 'False';\n        return s;\n      })\n    : ['True', 'False'];\n\n  const raw = String(q.correct_answer ?? '').trim();\n  const correct =\n    raw.charAt(0).toUpperCase() + raw.slice(1).toLowerCase();\n\n  return { ...q, options, correct_answer: correct };\n});\n\n// ─── Trim to expected total if AI over-generated ─────────────────────────────\nif (questions.length > expectedTotal) {\n  console.log(\n    `AI returned ${questions.length} questions. Trimming to ${expectedTotal}.`\n  );\n  questions = questions.slice(0, expectedTotal);\n}\n\nif (questions.length < expectedTotal) {\n  throw new Error(\n    `Too few questions. Expected ${expectedTotal}, received ${questions.length}. ` +\n    `Cannot add missing questions — regenerate required.`\n  );\n}\n\n// ─── Reassign IDs after trimming ─────────────────────────────────────────────\nquestions = questions.map((q, index) => ({\n  ...q,\n  id: index + 1\n}));\n\n// ─── Validate each question individually ─────────────────────────────────────\nconst questionTexts = new Set();\n\nfor (const q of questions) {\n\n  // Type\n  if (!q.type) {\n    throw new Error(`Question ${q.id} has no type.`);\n  }\n\n  const validTypes = ['multiple_choice', 'true_false', 'short_answer'];\n  if (!validTypes.includes(q.type)) {\n    throw new Error(\n      `Question ${q.id} has invalid type: \"${q.type}\". ` +\n      `Allowed: multiple_choice, true_false, short_answer.`\n    );\n  }\n\n  // Difficulty\n  if (!['Easy', 'Medium', 'Hard'].includes(q.difficulty)) {\n    throw new Error(\n      `Question ${q.id} has invalid difficulty: \"${q.difficulty}\". ` +\n      `Allowed: Easy, Medium, Hard.`\n    );\n  }\n\n  // Question text\n  const normalizedQuestion = String(q.question ?? '').trim().toLowerCase();\n\n  if (!normalizedQuestion) {\n    throw new Error(`Question ${q.id} has empty question text.`);\n  }\n\n  if (questionTexts.has(normalizedQuestion)) {\n    throw new Error(\n      `Duplicate question text at question ${q.id}: \"${q.question}\"`\n    );\n  }\n\n  questionTexts.add(normalizedQuestion);\n\n  // Required fields\n  if (!q.topic) {\n    throw new Error(`Question ${q.id} has no topic.`);\n  }\n\n  if (!q.explanation) {\n    throw new Error(`Question ${q.id} has no explanation.`);\n  }\n\n  if (!q.points || Number(q.points) <= 0) {\n    throw new Error(`Question ${q.id} has invalid points.`);\n  }\n\n  // ── Multiple Choice ───────────────────────────────────────────────────────\n  if (q.type === 'multiple_choice') {\n\n    if (!Array.isArray(q.options) || q.options.length !== 4) {\n      throw new Error(\n        `MCQ ${q.id} must have exactly 4 options. ` +\n        `Found: ${Array.isArray(q.options) ? q.options.length : 'none'}.`\n      );\n    }\n\n    const normalizedOptions = q.options.map(x =>\n      String(x).trim().toLowerCase()\n    );\n\n    if (new Set(normalizedOptions).size !== 4) {\n      throw new Error(`MCQ ${q.id} contains duplicate options.`);\n    }\n\n    const normalizedCorrect = String(q.correct_answer ?? '').trim().toLowerCase();\n    const optionMatch = normalizedOptions.some(o => o === normalizedCorrect);\n\n    if (!optionMatch) {\n      throw new Error(\n        `MCQ ${q.id} correct_answer \"${q.correct_answer}\" does not match any option.`\n      );\n    }\n  }\n\n  // ── True / False ──────────────────────────────────────────────────────────\n  if (q.type === 'true_false') {\n\n    if (\n      !Array.isArray(q.options) ||\n      q.options.length !== 2 ||\n      !q.options.includes('True') ||\n      !q.options.includes('False')\n    ) {\n      throw new Error(\n        `True/False question ${q.id} must use [\"True\", \"False\"]. ` +\n        `Received: ${JSON.stringify(q.options)}`\n      );\n    }\n\n    if (!['True', 'False'].includes(q.correct_answer)) {\n      throw new Error(\n        `True/False question ${q.id} has invalid correct_answer: \"${q.correct_answer}\".`\n      );\n    }\n  }\n\n  // ── Short Answer ──────────────────────────────────────────────────────────\n  if (q.type === 'short_answer') {\n\n    if (\n      !Array.isArray(q.accepted_answers) ||\n      q.accepted_answers.length === 0\n    ) {\n      throw new Error(\n        `Short-answer question ${q.id} needs at least one accepted_answer.`\n      );\n    }\n\n    if (\n      !Array.isArray(q.grading_rubric) ||\n      q.grading_rubric.length === 0\n    ) {\n      throw new Error(\n        `Short-answer question ${q.id} needs at least one grading_rubric item.`\n      );\n    }\n  }\n}\n\n// ─── Summary (informational only — not enforced) ─────────────────────────────\nconst finalTypes = { multiple_choice: 0, true_false: 0, short_answer: 0 };\nconst finalDifficulty = { Easy: 0, Medium: 0, Hard: 0 };\n\nfor (const q of questions) {\n  if (q.type in finalTypes) finalTypes[q.type]++;\n  if (q.difficulty in finalDifficulty) finalDifficulty[q.difficulty]++;\n}\n\nconsole.log('Final type distribution:', JSON.stringify(finalTypes));\nconsole.log('Final difficulty distribution:', JSON.stringify(finalDifficulty));\n\n// ─── Source coverage check ───────────────────────────────────────────────────\nif (quiz.source_coverage_ok === false) {\n  throw new Error(\n    'AI reported that the requested topic is not sufficiently covered ' +\n    'by the source material.'\n  );\n}\n\n// ─── Pass ────────────────────────────────────────────────────────────────────\nreturn [\n  {\n    json: {\n      quiz: {\n        ...quiz,\n        questions\n      },\n      quizConfig: config,\n      validation: {\n        valid: true,\n        questionCount: questions.length,\n        finalTypes,\n        finalDifficulty\n      }\n    }\n  }\n];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        1888,
-        304
-      ],
-      "id": "66c0472c-354c-41f8-8460-d11df300454b",
-      "name": "Validate Quiz"
-    },
-    {
-      "parameters": {
-        "jsCode": "const apps = $input.first().json;\n\n// Log everything so we can see what Apps Script actually returned\nconsole.log('Apps Script returned:', JSON.stringify(apps));\n\nreturn [\n  {\n    json: {\n      success: true,\n      quizUrl: apps.formUrl || apps.url || null,\n      formId: apps.formId || null,\n      title: apps.title || 'Untitled Quiz',\n      responseSheetUrl: apps.responseSheetUrl || null,   // ✅ Fixed\n      responseSheetId: apps.responseSheetId || null,     // ✅ Fixed\n      responseSheetName: apps.responseSheetName || null, // ✅ Added\n      answerKeyUrl: apps.answerKeySheetUrl || null,      // ✅ Fixed (was answerKeyUrl)\n      answerKeyId: apps.answerKeySheetId || null,        // ✅ Fixed (was answerKeyId)\n      deadline: apps.deadline || null,\n      message: 'Your quiz has been generated successfully.'\n    }\n  }\n];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        2560,
-        304
-      ],
-      "id": "98ee503c-053b-49ac-8f01-561e0ab0eb51",
-      "name": "Format Response"
-    },
-    {
-      "parameters": {
-        "modelName": "models/gemini-3.5-flash-lite",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
-      "typeVersion": 1.1,
-      "position": [
-        1296,
-        496
-      ],
-      "id": "74c9328b-b09f-49e8-9b9b-039fc96c4d8d",
-      "name": "Google Gemini Chat Model"
-    },
-    {
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "field": "minutes",
-              "minutesInterval": 1
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.3,
-      "position": [
-        176,
-        800
-      ],
-      "id": "3f8c192f-1716-49c6-823a-fc4400b5b5f9",
-      "name": "Schedule Trigger1"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://YOUR-GOOGLE-APPS-SCRIPT-DEPLOYMENT/exec",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "{\n  \"action\": \"getPendingSubmissions\"\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.5,
-      "position": [
-        384,
-        816
-      ],
-      "id": "57ab709e-de8c-4995-8f79-688110ebdb02",
-      "name": "Get Pending Submissions"
-    },
-    {
-      "parameters": {
-        "jsCode": "const response = $json;\n\nif (!response.success) {\n  throw new Error(\n    response.error || 'Failed to retrieve pending submissions.'\n  );\n}\n\nconst submissions = Array.isArray(response.submissions)\n  ? response.submissions\n  : [];\n\nreturn submissions.map(submission => ({\n  json: submission\n}));"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        624,
-        736
-      ],
-      "id": "a2296ca5-ed6d-4187-b67d-1dbcff633a67",
-      "name": "Prepare Submissions"
-    },
-    {
-      "parameters": {
-        "jsCode": "function parseAIOutput(value) {\n  if (typeof value !== 'string') return value;\n  let text = value.trim();\n  if (text.startsWith('```')) {\n    text = text\n      .replace(/^```json\\s*/i, '')\n      .replace(/^```\\s*/i, '')\n      .replace(/```\\s*$/i, '')\n      .trim();\n  }\n  try {\n    return JSON.parse(text);\n  } catch (e) {\n    throw new Error('AI returned invalid JSON: ' + e.message + '\\n\\nOutput:\\n' + text);\n  }\n}\n\nconst ai = parseAIOutput($json.output);\nconst base = $('Loop Over Items').item.json;\n\nlet earnedPoints = 0;\nlet maxPoints = 0;\nconst incorrectAnswers = [];\nconst partiallyCorrect = [];\n\nif (Array.isArray(ai.graded_answers)) {\n  for (const g of ai.graded_answers) {\n    const awarded = Number(g.awarded_points || 0);\n    const max = Number(g.max_points || 1);\n    earnedPoints += awarded;\n    maxPoints += max;\n\n    if (g.verdict === 'incorrect') {\n      incorrectAnswers.push(g.question);\n    } else if (g.verdict === 'partial') {\n      partiallyCorrect.push(g.question);\n    }\n  }\n} else {\n  // Fallback: calculate from base answers if AI grading missing\n  for (const answer of base.answers) {\n    const points = Number(answer.points || 1);\n    maxPoints += points;\n\n    const student = String(answer.student_answer || '').trim().toLowerCase();\n    const correct = String(answer.correct_answer || '').trim().toLowerCase();\n\n    if (student === correct && student !== '') {\n      earnedPoints += points;\n    } else {\n      incorrectAnswers.push(answer.question);\n    }\n  }\n}\n\nconst percentage = maxPoints > 0\n  ? Math.round((earnedPoints / maxPoints) * 10000) / 100\n  : 0;\n\nlet classification;\nlet classificationColor;\nif (percentage >= 95) {\n  classification = 'Outstanding';\n  classificationColor = '#10b981';\n} else if (percentage >= 85) {\n  classification = 'Excellent';\n  classificationColor = '#22c55e';\n} else if (percentage >= 70) {\n  classification = 'Good';\n  classificationColor = '#3b82f6';\n} else if (percentage >= 60) {\n  classification = 'Fair';\n  classificationColor = '#f59e0b';\n} else {\n  classification = 'Needs Improvement';\n  classificationColor = '#ef4444';\n}\n\n// Build an HTML score banner to prepend to the AI's HTML report\nconst scoreBanner = `\n<div style=\"max-width:600px;margin:20px auto;background:linear-gradient(135deg,${classificationColor},${classificationColor}dd);border-radius:12px;padding:30px;text-align:center;font-family:Arial,Helvetica,sans-serif;box-shadow:0 4px 12px rgba(0,0,0,0.1);\">\n  <div style=\"color:#ffffff;font-size:14px;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;\">📊 Official Score</div>\n  <div style=\"color:#ffffff;font-size:48px;font-weight:bold;margin:10px 0;\">${earnedPoints} / ${maxPoints}</div>\n  <div style=\"color:#ffffff;font-size:36px;font-weight:bold;margin:5px 0;\">${percentage}%</div>\n  <div style=\"display:inline-block;background:rgba(255,255,255,0.2);color:#ffffff;padding:8px 20px;border-radius:20px;font-size:16px;font-weight:bold;margin-top:10px;\">${classification}</div>\n  <table width=\"100%\" cellpadding=\"10\" cellspacing=\"0\" style=\"margin-top:20px;color:#ffffff;\">\n    <tr>\n      <td style=\"text-align:center;border-right:1px solid rgba(255,255,255,0.3);\">\n        <div style=\"font-size:24px;font-weight:bold;\">${base.answers.length}</div>\n        <div style=\"font-size:12px;opacity:0.9;\">Questions</div>\n      </td>\n      <td style=\"text-align:center;border-right:1px solid rgba(255,255,255,0.3);\">\n        <div style=\"font-size:24px;font-weight:bold;\">${incorrectAnswers.length}</div>\n        <div style=\"font-size:12px;opacity:0.9;\">Needs Review</div>\n      </td>\n      <td style=\"text-align:center;\">\n        <div style=\"font-size:24px;font-weight:bold;\">${partiallyCorrect.length}</div>\n        <div style=\"font-size:12px;opacity:0.9;\">Partial</div>\n      </td>\n    </tr>\n  </table>\n</div>\n`;\n\n// The AI now generates full HTML — prepend the score banner\nconst htmlReport = scoreBanner + String(ai.report_markdown || '').trim();\n\nreturn [{\n  json: {\n    ...base,\n    earnedPoints,\n    maxPoints,\n    percentage,\n    classification,\n    report: htmlReport\n  }\n}];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        1456,
-        784
-      ],
-      "id": "2db3557d-ba7a-48ed-a52f-f514f654c840",
-      "name": "Finalize Report"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://YOUR-GOOGLE-APPS-SCRIPT-DEPLOYMENT/exec",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ action: \"markEvaluated\", responseSheetId: $('Loop Over Items').item.json.responseSheetId, responseSheetName: $('Loop Over Items').item.json.responseSheetName, rowNumber: $('Loop Over Items').item.json.rowNumber, score: $('Finalize Report').item.json.earnedPoints, percentage: $('Finalize Report').item.json.percentage }) }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.5,
-      "position": [
-        2192,
-        784
-      ],
-      "id": "30015788-2488-45d6-bb4b-ff2aa325b335",
-      "name": "HTTP Request1"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        848,
-        784
-      ],
-      "id": "e8f79701-1064-4a95-9916-52397ff3eed7",
-      "name": "Loop Over Items"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
-      "typeVersion": 1.1,
-      "position": [
-        1136,
-        1008
-      ],
-      "id": "1c952cd6-ff92-48fa-9ed3-28e77591b5fc",
-      "name": "Google Gemini Chat Model1"
+      "id": "eba426ae-7714-46ff-bbeb-a214c0c58106",
+      "name": "Respond to Webhook1"
     }
   ],
   "pinData": {},
   "connections": {
-    "Extract from File": {
-      "main": [
-        [
-          {
-            "node": "Code in JavaScript2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "AI Agent": {
       "main": [
         [
@@ -491,7 +547,7 @@
       "main": [
         [
           {
-            "node": "Respond to Webhook",
+            "node": "Route File Type",
             "type": "main",
             "index": 0
           }
@@ -509,28 +565,12 @@
         ]
       ]
     },
-    "Format Response": {
-      "main": [
-        []
-      ]
-    },
     "Google Gemini Chat Model": {
       "ai_languageModel": [
         [
           {
             "node": "AI Agent",
             "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Respond to Webhook": {
-      "main": [
-        [
-          {
-            "node": "Extract from File",
-            "type": "main",
             "index": 0
           }
         ]
@@ -613,20 +653,70 @@
           }
         ]
       ]
+    },
+    "Route File Type": {
+      "main": [
+        [
+          {
+            "node": "Extract PDF File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract Text File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PDF File": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Text File": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1",
-    "binaryMode": "separate",
-    "availableInMCP": false
+    "binaryMode": "separate"
   },
-  "versionId": "dc7adbfd-bf5f-449d-9476-c4ccbc243462",
+  "versionId": "a5da4f68-9ee2-41ca-a9dd-b47addbb9a29",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "0641176945e7cd7df0d43afe0eead1ecc1686e9846ac4036279f6c8ef51af78e"
+    "instanceId": "00dd19e25511a7999940879a2497a22dbade8275e6ca5c6887fabfb4de682036"
   },
   "nodeGroups": [],
-  "id": "pQalrIT0CtWv7aGq",
+  "id": "XgFLDn6wYt2XnQl5",
   "tags": []
 }
