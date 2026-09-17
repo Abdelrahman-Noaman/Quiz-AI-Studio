@@ -67,21 +67,21 @@ Creating an assessment involves much more than writing questions:
 
 ---
 
-## 💡 The Solution
+## 💡 Why I Built It
 
-**QuizAI Studio** explores how LLMs and workflow automation can automate the repetitive parts of assessment creation and evaluation while keeping the teacher in control of the source material and assessment requirements.
+<div align="center">
 
-The teacher provides:
+<img src="https://user-images.githubusercontent.com/74038190/213911110-aedbef38-a29f-4b6b-a65c-11608b4f75a5.gif" alt="Developer animation" width="200" />
 
-* Course material
-* Question count
-* Difficulty
-* Question types
-* Topic
-* Custom instructions
-* Deadline
+</div>
 
-QuizAI handles the rest of the pipeline.
+QuizAI Studio is a **self-initiated project** I built because I wanted to explore what it takes to turn AI capabilities into a complete, practical system.
+
+Instead of building another simple chatbot or AI demo, I wanted to connect the entire journey:
+
+**User interface → LLMs → APIs → workflow automation → Google Workspace → evaluation → personalized output**
+
+The project gave me a way to work with real-world AI integration challenges such as structured LLM outputs, validation, document processing, workflow orchestration, external APIs, and multi-step automation.
 
 > **You set the intent. QuizAI runs the loop.**
 
@@ -748,7 +748,7 @@ The n8n webhook URL is stored in browser settings rather than a Next.js environm
 
 ### Current Limitations
 
-QuizAI Studio is currently a **graduation-project prototype**, not a production SaaS deployment.
+QuizAI Studio is a **self-initiated project** and is currently being developed toward a more complete SaaS architecture.
 
 * 🔓 Authentication is currently a UI gate only
 * 🚪 Routes are not protected
@@ -822,11 +822,13 @@ gemini
 
 <div align="center">
 
-## 🎓 About
+## 🚀 About
 
-**QuizAI Studio** is a graduation project exploring how LLMs and workflow automation can automate the repetitive parts of assessment creation and evaluation.
+**QuizAI Studio** is a self-initiated project I built because I wanted to explore how LLMs and workflow automation could be turned into a complete, practical AI-powered product.
 
-The project combines a modern Next.js teacher interface with n8n workflow orchestration, Google Gemini, Google Apps Script, Google Forms, Google Sheets, and Gmail to demonstrate an end-to-end AI-powered assessment pipeline.
+It combines a modern Next.js teacher interface with n8n workflow orchestration, Google Gemini, Google Apps Script, Google Forms, Google Sheets, and Gmail to demonstrate an end-to-end assessment automation pipeline.
+
+I built it to learn by solving a real workflow end-to-end — not simply to experiment with an LLM.
 
 <br />
 
