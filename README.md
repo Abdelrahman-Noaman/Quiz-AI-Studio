@@ -19,7 +19,7 @@
   <a href="https://www.youtube.com/watch?v=GTqxbrLLr8U"><strong>▶️ Watch Demo</strong></a> •
   <a href="#-try-it-in-2-minutes">Try it Locally</a> •
   <a href="#-full-power-setup-for-reviewers">Full Setup Guide</a> •
-  <a href="workflows/quizai-studio.json">n8n Workflow</a>
+  <a href="workflows/Quiz%20AI%20Studio%20-%20FINAL%20FIX.json">n8n Workflow</a>
 </p>
 
 <img src="docs/screenshots/quizai-demo.gif" alt="QuizAI Studio Demo" width="900" />
@@ -128,7 +128,7 @@ When students submit, the workflow retrieves their responses, evaluates them wit
 >
 > The **Next.js application is the teacher-facing cockpit**. The AI generation, document extraction, validation, evaluation, and Google Workspace automation live primarily inside the n8n workflow:
 >
-> [`workflows/quizai-studio.json`](workflows/quizai-studio.json)
+> [`workflows/Quiz AI Studio - FINAL FIX.json`](workflows/Quiz%20AI%20Studio%20-%20FINAL%20FIX.json)
 
 ---
 
@@ -277,7 +277,7 @@ Create or open an n8n workspace.
 
 Import the sanitized workflow:
 
-[`workflows/quizai-studio.json`](workflows/quizai-studio.json)
+[`workflows/Quiz AI Studio - FINAL FIX.json`](workflows/Quiz%20AI%20Studio%20-%20FINAL%20FIX.json)
 
 The public workflow intentionally contains placeholders such as:
 
@@ -624,7 +624,7 @@ Full technical details:
 
 * [`ARCHITECTURE.md`](ARCHITECTURE.md)
 * [`docs/INTEGRATIONS.md`](docs/INTEGRATIONS.md)
-* [`workflows/quizai-studio.json`](workflows/quizai-studio.json)
+* [`workflows/Quiz AI Studio - FINAL FIX.json`](workflows/Quiz%20AI%20Studio%20-%20FINAL%20FIX.json)
 
 </details>
 
@@ -668,7 +668,8 @@ src/
 public/                  → Logos and presentation assets
 
 workflows/
-└── quizai-studio.json   → Sanitized n8n workflow
+└── Quiz AI Studio - FINAL FIX.json
+                          → Sanitized n8n workflow
 
 docs/
 └── screenshots/         → Product walkthrough screenshots
@@ -791,7 +792,7 @@ QuizAI Studio is currently a **graduation-project prototype**, not a production 
 * 📐 [`ARCHITECTURE.md`](ARCHITECTURE.md) — Architecture deep dive
 * 🔌 [`docs/INTEGRATIONS.md`](docs/INTEGRATIONS.md) — Gemini, n8n, and Google Workspace integration
 * ⚙️ [`.env.example`](.env.example) — Environment configuration template
-* 🤖 [`workflows/quizai-studio.json`](workflows/quizai-studio.json) — Sanitized n8n workflow
+* 🤖 [`workflows/Quiz AI Studio - FINAL FIX.json`](workflows/Quiz%20AI%20Studio%20-%20FINAL%20FIX.json) — Sanitized n8n workflow
 
 ---
 
